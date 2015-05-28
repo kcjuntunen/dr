@@ -57,8 +57,8 @@ std::string* BiblePlan::GetDay(int d) {
 	boost::property_tree::read_json(is, pt);
 	int count = 0;
 	std::string * s;
-	// http://stackoverflow.com/questions/17124652/how-can-i-parse-json-arrays-with-c-boost
-	BOOST_FOREACH(boost::property_tree::ptree::value_type &data,
+
+    BOOST_FOREACH(boost::property_tree::ptree::value_type &data,
 			pt.get_child("data2")) {
 		count++;
 		if (count == d) {
