@@ -1,2 +1,4 @@
 Debug/
 *~
+.project
+.cproject
