@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	string* res = bp->GetToday();
 
 	for (int j = 0 ; j < bp->GetArraySize(); j++) {
-	  cout << j+1 << ": " << res[j] << endl;
+		cout << j+1 << ": " << res[j] << endl;
 	}
 
 	return 0;

@@ -4,16 +4,15 @@
  *  Created on: May 26, 2015
  *      Author: kcjuntunen
  */
-
-#include <iostream>
 #include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ptree_serialization.hpp>
 #include <boost/property_tree/json_parser.hpp>
+#include <errno.h>
 #include <fstream>
+#include <iostream>
 #include <streambuf>
-#include <cerrno>
 #include <time.h>
 
 #include "BiblePlan.h"
@@ -38,13 +37,13 @@ std::string GetJsonFile() {
 }
 
 std::string BiblePlan::get_file_contents(const char *filename) {
-  std::ifstream in(filename, std::ios::in | std::ios::binary);
-  if (in)
-  {
-    return(std::string((std::istreambuf_iterator<char>(in)),
-    		std::istreambuf_iterator<char>()));
-  }
-  throw(errno);
+	std::ifstream in(filename, std::ios::in | std::ios::binary);
+	if (in)
+	{
+		return(std::string((std::istreambuf_iterator<char>(in)),
+				std::istreambuf_iterator<char>()));
+	}
+	throw(errno);
 }
 
 void BiblePlan::initialize() {
@@ -58,7 +57,7 @@ std::string* BiblePlan::GetDay(int d) {
 	int count = 0;
 	std::string * s;
 
-    BOOST_FOREACH(boost::property_tree::ptree::value_type &data,
+	BOOST_FOREACH(boost::property_tree::ptree::value_type &data,
 			pt.get_child("data2")) {
 		count++;
 		if (count == d) {
