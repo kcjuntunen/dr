@@ -19,24 +19,31 @@
 #include <time.h>
 
 class BiblePlan {
-public:
-	BiblePlan(std::string filename);
-	virtual ~BiblePlan();
+ public:
+  BiblePlan(std::string filename);
+  virtual
+  ~BiblePlan();
 
-	std::string GetJsonFile();
-	std::string* GetDay(int d);
-	std::string* GetToday();
-	int GetArraySize();
-private:
-	int GetDayOfYear();
-	std::string jsonFile;
-	std::string fileContents;
-	std::string * s;
+  std::string
+  GetJsonFile();
+  std::string*
+  GetDay(int d);
+  std::string*
+  GetToday();
+  int
+  GetArraySize();
+ private:
+  int
+  GetDayOfYear();
+  std::string jsonFile;
+  std::string fileContents;
+  std::string * s;
 
-	void initialize();
-	std::string get_file_contents(const char *filename);
-	int _arraySize;
+  void
+  initialize();
+  std::string
+  get_file_contents(const char *filename);
+  int _arraySize;
 };
-
 
 #endif /* BIBLEPLAN_H_ */

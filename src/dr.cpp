@@ -9,18 +9,17 @@
 #include "./BiblePlan.h"
 
 using namespace std;
-//using namespace boost::property_tree;
 
 int main(int argc, char** argv) {
-	string pathstring = argv[1];
-	BiblePlan* bp = new BiblePlan(pathstring);
+  string pathstring = argv[1];
+  BiblePlan* bp = new BiblePlan(pathstring);
 
-	string* res = bp->GetToday();
+  string* res = bp->GetToday();
 
-	for (int j = 0 ; j < bp->GetArraySize(); j++) {
-		cout << j+1 << ": " << res[j] << endl;
-	}
+  for (int j = 0; j < bp->GetArraySize(); j++) {
+    cout << j + 1 << ": " << res[j] << endl;
+  }
 
-	delete bp;
-	return 0;
+  delete bp;
+  return 0;
 }
