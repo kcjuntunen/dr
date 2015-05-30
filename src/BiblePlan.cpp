@@ -4,34 +4,23 @@
  *  Created on: May 26, 2015
  *      Author: kcjuntunen
  */
-#include <boost/foreach.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/ptree_serialization.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <errno.h>
-#include <fstream>
-#include <iostream>
-#include <streambuf>
-#include <time.h>
-
 #include "BiblePlan.h"
 
 int _arraySize;
+std::string jsonFile;
+std::string fileContents;
+std::string * s;
 
 BiblePlan::BiblePlan(std::string filename) {
-	// TODO Auto-generated constructor stub
 	jsonFile = filename;
 	_arraySize = 0;
 	this->initialize();
 }
 
 BiblePlan::~BiblePlan() {
-	// TODO Auto-generated destructor stub
+	delete [] s;
 }
 
-std::string jsonFile;
-std::string fileContents;
 std::string GetJsonFile() {
 	return jsonFile;
 }
@@ -55,7 +44,6 @@ std::string* BiblePlan::GetDay(int d) {
 	std::istringstream is (fileContents);
 	boost::property_tree::read_json(is, pt);
 	int count = 0;
-	std::string * s;
 
 	BOOST_FOREACH(boost::property_tree::ptree::value_type &data,
 			pt.get_child("data2")) {
