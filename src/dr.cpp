@@ -22,5 +22,6 @@ int main(int argc, char** argv) {
 		cout << j+1 << ": " << res[j] << endl;
 	}
 
+	delete bp;
 	return 0;
 }
