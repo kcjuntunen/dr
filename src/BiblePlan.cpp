@@ -44,19 +44,29 @@ std::string* BiblePlan::GetDay(int d) {
 	std::istringstream is (fileContents);
 	boost::property_tree::read_json(is, pt);
 	int count = 0;
-
-	BOOST_FOREACH(boost::property_tree::ptree::value_type &data,
-			pt.get_child("data2")) {
-		count++;
-		if (count == d) {
-			int j = 0;
-			_arraySize = data.second.size();
-			s = new std::string[_arraySize];
-			BOOST_FOREACH(boost::property_tree::ptree::value_type &set,
-					data.second) {
-				s[j++] = set.second.get_value<std::string>();
+	try {
+		BOOST_FOREACH(boost::property_tree::ptree::value_type &data,
+				pt.get_child("data2")) {
+			count++;
+			if (count == d) {
+				int j = 0;
+				_arraySize = data.second.size();
+				s = new std::string[_arraySize];
+				BOOST_FOREACH(boost::property_tree::ptree::value_type &set,
+						data.second) {
+					s[j++] = set.second.get_value<std::string>();
+				}
 			}
 		}
+	}
+	catch (boost::property_tree::ptree_bad_path &pbp) {
+		std::cout << "No such thing as 'data2' in '" << this->jsonFile
+				<< "':" << std::endl << pbp.what() << std::endl;
+		return NULL;
+	}
+	catch (boost::property_tree::ptree_bad_data &pbd) {
+		std::cout << pbd.what() << std::endl;
+		return NULL;
 	}
 
 	return s;

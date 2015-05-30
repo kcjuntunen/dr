@@ -8,7 +8,6 @@
 #include <iostream>
 #include "./BiblePlan.h"
 
-
 using namespace std;
 //using namespace boost::property_tree;
 

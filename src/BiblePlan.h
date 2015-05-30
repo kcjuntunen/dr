@@ -7,8 +7,8 @@
 
 #ifndef BIBLEPLAN_H_
 #define BIBLEPLAN_H_
+
 #include <boost/foreach.hpp>
-#include <boost/filesystem.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ptree_serialization.hpp>
 #include <boost/property_tree/json_parser.hpp>
